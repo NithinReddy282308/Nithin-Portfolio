@@ -32,75 +32,93 @@ export default function Home() {
   return (
     <section className="home-section">
 
-      {/* Typing + layout Styles */}
-      <style>
-        {`
-          /* typing animation for the name (no cursor) */
-          @keyframes typingName { from { width: 0; } to { width: 100%; } }
-          /* typing animation for tagline with blinking cursor */
-          @keyframes typingTag { from { width: 0; } to { width: 100%; } }
-          @keyframes blink { 50% { border-color: transparent; } }
+     {/* Typing + layout Styles */}
+<style>
+{`
+  /* --- NAME TYPING ANIMATION (NO CURSOR) --- */
+  @keyframes typingName { from { width: 0; } to { width: 100%; } }
 
-          /* Ensure the H1 keeps the greeting and name on one line and aligned */
-          .home-title {
-            display: flex;
-            align-items: baseline; /* align on text baseline for perfect match */
-            gap: 14px;
-            flex-wrap: nowrap;
-            font-weight: 700;
-          }
+  .home-name.typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typingName 2.2s steps(22, end) forwards;
 
-          .hi-text {
-            font-size: 2.4rem;
-            color: #ffffff;
-            white-space: nowrap;
-            line-height: 1;
-          }
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
-          /* Name typing style — types once, no cursor */
-          .home-name.typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            animation: typingName 2.2s steps(22, end) forwards;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 2.4rem;
-            line-height: 1;
-          }
+    font-size: 2.4rem;
+    /* IMPORTANT: increase line-height so descenders (g,y,p) are visible */
+    line-height: 1.22;
+    vertical-align: baseline;
+  }
 
-          /* Tagline typing effect with blinking cursor at end */
-          .typing-effect.typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            border-right: 2px solid rgba(255,255,255,0.85); /* cursor */
-            box-sizing: border-box;
-            animation:
-              typingTag 3s steps(40, end) forwards,
-              blink .8s step-end infinite 3.05s; /* blink starts after typing */
-            color: rgba(255,255,255,0.95);
-            margin-top: 8px;
-            font-size: 1.05rem;
-          }
+  /* --- TAGLINE TYPING + BLINKING CURSOR --- */
+  @keyframes typingTag { from { width: 0; } to { width: 100%; } }
+  @keyframes blink { 50% { border-color: transparent; } }
 
-          /* Make sure small screens don't break badly: allow scale down */
-          @media (max-width: 640px) {
-            .home-title { gap: 8px; }
-            .hi-text, .home-name.typing { font-size: 1.6rem; }
-            .typing-effect.typing { font-size: 0.95rem; }
-          }
-        `}
-      </style>
+  .typing-effect.typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 
-      {/* Top Section: Photo + Info */}
+    width: 0;
+    width: fit-content;
+    max-width: max-content;
+
+    border-right: 2px solid rgba(255,255,255,0.85);
+
+    animation:
+      typingTag 3s steps(40, end) forwards,
+      blink .8s step-end infinite 3.05s;
+
+    color: rgba(255,255,255,0.95);
+    margin-top: 8px;
+    font-size: 1.05rem;
+    box-sizing: border-box;
+
+    /* match text line-height to avoid vertical mismatch with the heading */
+    line-height: 1.22;
+    vertical-align: baseline;
+  }
+
+  /* --- GREETING + NAME ON SAME LINE (baseline alignment) --- */
+  .home-title {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    white-space: nowrap;
+    /* small bottom padding so descenders are not clipped by parent */
+    padding-bottom: 4px;
+    line-height: 1.22;
+  }
+
+  .hi-text {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    line-height: 1.22;
+    vertical-align: baseline;
+  }
+
+  /* Mobile-friendly */
+  @media (max-width: 640px) {
+    .home-title { gap: 8px; }
+    .hi-text, .home-name.typing { font-size: 1.6rem; line-height: 1.18; }
+    .typing-effect.typing { font-size: 0.95rem; line-height: 1.18; }
+  }
+`}
+</style>
+
+
+      {/* --- TOP SECTION --- */}
       <div className="home-top">
 
-        {/* Left: Glowing Photo */}
+        {/* Photo Section */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -128,7 +146,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Info Section */}
+        {/* Info Section */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -137,6 +155,7 @@ export default function Home() {
         >
           <h1 className="home-title">
             <span className="hi-text">Hi, I’m</span>
+
             <motion.span
               animate={{ backgroundPositionX: ['0%', '200%'] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
@@ -146,7 +165,7 @@ export default function Home() {
             </motion.span>
           </h1>
 
-          {/* Typing Animated Text with blinking cursor */}
+          {/* Tagline with blinking cursor */}
           <p className="typing-effect typing">
             Software Engineer | Frontend Developer | Tech Explorer | Cloud Engineer
           </p>
@@ -189,7 +208,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Bottom Quick Links */}
+      {/* QUICK LINKS */}
       <motion.div className="quick-links" style={{ marginTop: '2.2rem' }}>
         <h2 className="quick-links-title">Connect with me</h2>
         <div className="quick-links-list">

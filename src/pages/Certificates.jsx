@@ -5,50 +5,28 @@ import { motion, AnimatePresence } from "framer-motion";
 const CERTS = {
   tech: [
     {
-      title: "Certified Essentias Automation Professional",
+      title: "AI Associate",
+      org: "Salesforce",
+      date: "2024",
+      img: "/certs/AI A(sf).jpg",
+      link: "/certs/AI A(sf).jpg",
+    },
+    {
+      title: "Essentials Automation Professional",
       org: "Robotic Process Automation",
       date: "2025",
       img: "/certs/RPA.jpg",
       link: "/certs/RPA.jpg",
     },
     {
-      title: "Solution Challenge",
-      org: "Google Developers",
-      date: "2023",
-      img: "/certs/hack2skill.png",
-      link: "/certs/hack2skill.png",
-    },
-    {
-      title: "ADira",
-      org: "SCET AI Club",
+      title: "Python",
+      org: "NPTEL",
       date: "2025",
-      img: "/certs/adira.png",
-      link: "/certs/adira.png",
+      img: "/certs/Pyhton.jpg",
+      link: "/certs/Pyhton.jpg",
     },
   ],
-  other: [
-    {
-      title: "codathon",
-      org: "SCET tech fest",
-      date: "2025",
-      img: "/certs/codathon.png",
-      link: "/certs/codathon.png",
-    },
-    {
-      title: "bugbuzz",
-      org: "SCET tech fest",
-      date: "2025",
-      img: "/certs/bugbuzz.png",
-      link: "/certs/bugbuzz.png",
-    },
-    {
-      title: "Dataloom",
-      org: "SCET",
-      date: "2024",
-      img: "/certs/dataloom.png",
-      link: "/certs/dataloom.png",
-    },
-  ],
+ 
 };
 
 export default function Certificates() {
@@ -65,7 +43,7 @@ export default function Certificates() {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
-          {["tech", "other"].map((t) => (
+          {["tech"].map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
