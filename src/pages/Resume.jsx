@@ -53,16 +53,16 @@ export default function Resume() {
         >
           <div>
             <h3 style={{ fontSize: 24, color: "#00b4ff", marginBottom: 4 }}>
-              👨‍💻 KUNJ D. DESAI
+              👨‍💻 Vanga Nithin Reddy
             </h3>
             <p style={{ margintop: 10, fontSize: 15, color: "#ccc" }}>
               4th Year B.Tech — AI & Data Science | S.C.E.T, Sarvajanik University
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
-              📍 Jahangirpura, Surat, Gujarat
+              📍 Guntur, Andhra Pradesh, India
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
-              ✉️ kunjd2803@gmail.com | 📞 +91 8758209508
+              ✉️ nithinvanga7788@gmail.com | 📞 +91 9177713081
             </p>
           </div>
 
@@ -80,10 +80,8 @@ export default function Resume() {
           >
             <strong style={{ color: "#00b4ff" }}>Professional Summary:</strong>
             <p style={{ marginTop: 6, color: "#ccc" }}>
-              4th-year B.Tech AI student experienced in ML, DL, and computer vision.
-              Skilled in Python, TensorFlow, PyTorch, and Scikit-learn. Passionate about
-              building impactful AI systems and seeking opportunities to contribute to
-              real-world AI projects.
+            Results-driven B.Tech student inArtificial Intelligence and DataScience at VVIT, Guntur,concurrently working as a Freelance Software Developer at Srireina Technologies. Skilled in cloud operations, secure system deployment, and web application management for CV-based and online-proctored exam portals. Recognized for astute problem solving, versatile technical
+proficiency, and time-prioritized execution, with a proven ability to spearhead innovative, ML-integrated solutions while maintaining academic excellence.
             </p>
           </motion.div>
         </motion.div>
@@ -108,7 +106,7 @@ export default function Resume() {
             <li>
               <strong>B.Tech in Artificial Intelligence & Data Science</strong> — S.C.E.T
               (Sarvajanik University), 2022–2026 <br />
-              <span style={{ color: "#aaa" }}>GPA: 9.0</span>
+              <span style={{ color: "#aaa" }}>GPA: 8.17</span>
             </li>
             <li style={{ marginTop: 8 }}>
               <strong>12th Board — R.S.M. Poonawala Experimental School</strong> (Gujarat
@@ -150,21 +148,11 @@ export default function Resume() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {[
               "Python",
-              "C",
-              "C++",
-              "Java",
-              "TensorFlow",
-              "PyTorch",
-              "Scikit-learn",
-              "OpenCV",
-              "YOLO",
-              "Streamlit",
               "React",
               "MySQL",
               "MongoDB",
               "Git",
               "NLP",
-              "Explainable AI (XAI)",
               "Problem Solving",
               "Teamwork",
               "Adaptability",
@@ -198,9 +186,8 @@ export default function Resume() {
           }}
         >
           {[
-            { name: "🏆 LeetCode", link: "https://leetcode.com/u/Kunj_2803/" },
-            { name: "💻 GitHub", link: "https://github.com/kunj2803" },
-            { name: "💼 LinkedIn", link: "https://www.linkedin.com/in/kunj-desai-07717b293/" },
+            { name: "💻 GitHub", link: 'https://github.com/NithinReddy282308' },
+            { name: "💼 LinkedIn", link: "https://www.linkedin.com/in/vanganithinreddy/" },
           ].map((site) => (
             <motion.a
               key={site.name}
@@ -234,7 +221,7 @@ export default function Resume() {
         >
           <iframe
             src="/resume.pdf"
-            title="Kunj Desai Resume"
+            title="Nithin Reddy Resume"
             style={{
               width: "100%",
               height: "650px",

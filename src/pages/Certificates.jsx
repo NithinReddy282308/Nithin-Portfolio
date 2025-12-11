@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const CERTS = {
   tech: [
     {
-      title: "Flipkart Hackathon",
-      org: "Flipkart",
-      date: "2022",
-      img: "/certs/flipkart.jpg",
-      link: "/certs/flipkart.jpg",
+      title: "Certified Essentias Automation Professional",
+      org: "Robotic Process Automation",
+      date: "2025",
+      img: "/certs/RPA.jpg",
+      link: "/certs/RPA.jpg",
     },
     {
       title: "Solution Challenge",
@@ -60,7 +60,7 @@ export default function Certificates() {
       <div className="card" style={{ background: "#111", borderRadius: 12, padding: 24 }}>
         <h2 style={{ fontSize: "1.8rem", color: "#fff", marginBottom: 4 }}>Certificates 🏅</h2>
         <p className="lead" style={{ color: "#aaa" }}>
-          Explore my certifications — technical & others.
+          Explore my certifications - technical.
         </p>
 
         {/* Tabs */}

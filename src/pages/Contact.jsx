@@ -67,12 +67,10 @@ export default function Contact() {
   };
 
   const quickLinks = [
-    { img: githubLogo, title: "GitHub", link: "https://github.com/kunj2803" },
-    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/kunj-desai-07717b293/" },
-    { img: gmailLogo, title: "Email", link: "mailto:kunjd2803@gmail.com" },
-    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+918758209508" },
-    { img: instagramLogo, title: "Instagram", link: "https://www.instagram.com/kunj_2834/" },
-    { img: facebookLogo, title: "Facebook", link: "https://www.facebook.com/kunj.desai.222608" },
+    { img: githubLogo, title: "GitHub", link: "https://github.com/NithinReddy282308" },
+    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vanganithinreddy/" },
+    { img: gmailLogo, title: "Email", link: "mailto:nithinvanga7788@gmail.com" },
+    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+919177713081" },
   ];
 
   return (
@@ -92,7 +90,7 @@ export default function Contact() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="contact-subtitle"
       >
-        Whether it’s a new project, a collaboration, or just to say hi — I’d love to hear from you!
+        Whether it’s a new project, a collaboration, or just to say hi - I’d love to hear from you!
       </motion.p>
 
       {/* Quick Links */}

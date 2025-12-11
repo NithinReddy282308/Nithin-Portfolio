@@ -17,8 +17,10 @@ export default function Home() {
   const professions = [
     'AI Enthusiast',
     'Software Engineer',
-    "Trouble ShootingExpert",
+    "Trouble Shooting Expert",
     'Developer',
+    'Cloud Engineer',
+    'Website Management'
   ]
 
   const quickLinks = [

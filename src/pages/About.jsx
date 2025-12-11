@@ -56,25 +56,49 @@ const AboutMe = () => {
             marginBottom: "1rem",
           }}
         >
-          Hi, I’m <strong>Vanga Nithin Reddy</strong> — an aspiring{" "}
-          <strong>Artificial Intelligence Engineer</strong> and{" "}
-          <strong>Machine Learning enthusiast</strong> who loves turning ideas
-          into intelligent systems. I’m deeply fascinated by how data and
-          algorithms can shape the future of healthcare, automation, and
-          creativity in technology.
+          Hi, I’m <strong>Vanga Nithin Reddy</strong> - an aspiring{" "}
+          <strong>Software Engineer</strong> and{" "}
+          <strong>Machine Learning enthusiast</strong> passionate about building
+          intelligent systems that solve real-world problems. I’m fascinated by
+          how <strong>data</strong> and <strong>algorithms</strong> can
+          transform industries like healthcare, automation, education, and
+          creative technology.
         </p>
 
         <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.8)" }}>
-          Beyond code, I enjoy exploring design, experimenting with motion and
-          interaction, and finding ways to blend{" "}
+          Beyond coding, I enjoy exploring <strong>design</strong>,
+          experimenting with <strong>motion</strong> and{" "}
+          <strong>interaction</strong> and blending{" "}
           <strong>artistic creativity</strong> with{" "}
           <strong>technical precision</strong>. My goal is to build solutions
-          that not only perform — but also inspire.
+          that not only perform efficiently - but also inspire.
         </p>
 
-        <p>
-            4th-year B.Tech AI Engineering student with hands-on experience in ML & DL Projects. Proficient in Python, scikitlearn,pytorch,tensorflow and data preprocessing. Seeking internship opportunities to apply skills and contribute to
-            impactful AI solutions.
+        {/* ⭐ UPDATED PARAGRAPH INSERTED HERE */}
+        <p
+          style={{
+            fontSize: "1.1rem",
+            color: "rgba(255,255,255,0.8)",
+            marginTop: "1rem",
+          }}
+        >
+          I’m currently pursuing my{" "}
+          <strong>B.Tech in Artificial Intelligence and Data Science</strong> at
+          VVIT, Guntur, while working as a{" "}
+          <strong>Freelance Software Developer</strong> at Srireina
+          Technologies. I specialize in{" "}
+          <strong>cloud operations</strong>,{" "}
+          <strong>secure system deployment</strong> and{" "}
+          <strong>full-stack web application development</strong> for CV-based
+          and online-proctored exam platforms.
+          <br />
+          <br />
+          Known for strong <strong>problem-solving abilities</strong>,{" "}
+          <strong>technical versatility</strong>  and{" "}
+          <strong>time-prioritized execution</strong>, I consistently deliver
+          reliable, production-ready solutions. With a growing portfolio of{" "}
+          <strong>ML-integrated projects</strong>, I aim to blend innovation
+          with practical engineering while maintaining academic excellence.
         </p>
 
         {/* --- Education Section --- */}
@@ -139,11 +163,11 @@ const AboutMe = () => {
                     marginBottom: "0.2rem",
                   }}
                 >
-                  <strong>S.C.E.T (Sarvajanik University)</strong> — Surat,
-                  Gujarat
+                  <strong>VVIT (Vasireddy Venkatadri Institute of Technology)</strong>{" "}
+                  - Guntur, Andhra Pradesh
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  4th Year (Pursuing) | GPA: 9.0
+                  4th Year (Pursuing) 
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>2022 – 2026</p>
               </div>
@@ -184,11 +208,10 @@ const AboutMe = () => {
                     marginBottom: "0.2rem",
                   }}
                 >
-                  <strong>R.S.M. Poonawala Experimental School</strong> — Ambika
-                  Niketan, Surat
+                  <strong>Mathrysri Junior College</strong> - Guntur
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Gujarat Board | Percentage: 78%
+                  Percentage: 96.10%
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>Completed in 2022</p>
               </div>
@@ -229,11 +252,10 @@ const AboutMe = () => {
                     marginBottom: "0.2rem",
                   }}
                 >
-                  <strong>R.S.M. Poonawala Experimental School</strong> — Surat,
-                  Gujarat
+                  <strong>Sri Chaitanya School</strong> - Guntur
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Gujarat Board | Percentage: 69%
+                  Percentage: 98.5%
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>Completed in 2020</p>
               </div>
