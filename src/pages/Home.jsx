@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import "../CSS/Home.css"
 import '../index.css' 
 
-
 // 🖼️ Import Assets
 import photo from '../../public/photo.jpg'
 import githubLogo from '../../public/github.png'
@@ -32,34 +31,75 @@ export default function Home() {
 
   return (
     <section className="home-section">
-      {/* Typing Effect Styles */}
+
+      {/* Typing + layout Styles */}
       <style>
         {`
+          /* typing animation for the name (no cursor) */
           @keyframes typingName { from { width: 0; } to { width: 100%; } }
+          /* typing animation for tagline with blinking cursor */
+          @keyframes typingTag { from { width: 0; } to { width: 100%; } }
           @keyframes blink { 50% { border-color: transparent; } }
 
-          /* Minimal typing style applied only to the name */
+          /* Ensure the H1 keeps the greeting and name on one line and aligned */
+          .home-title {
+            display: flex;
+            align-items: baseline; /* align on text baseline for perfect match */
+            gap: 14px;
+            flex-wrap: nowrap;
+            font-weight: 700;
+          }
+
+          .hi-text {
+            font-size: 2.4rem;
+            color: #ffffff;
+            white-space: nowrap;
+            line-height: 1;
+          }
+
+          /* Name typing style — types once, no cursor */
           .home-name.typing {
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
             width: 0;
-            border-right: 2px solid var(--accent);
-            box-sizing: border-box;
-            /* type the name once, then keep cursor blinking */
-            animation: typingName 2.2s steps(22, end) forwards,
-                       blink .7s step-end infinite 2.3s;
-            /* preserve your gradient/text style after typing finishes */
+            animation: typingName 2.2s steps(22, end) forwards;
             background: linear-gradient(90deg, var(--accent), var(--accent-2));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-size: 2.4rem;
+            line-height: 1;
+          }
+
+          /* Tagline typing effect with blinking cursor at end */
+          .typing-effect.typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            border-right: 2px solid rgba(255,255,255,0.85); /* cursor */
+            box-sizing: border-box;
+            animation:
+              typingTag 3s steps(40, end) forwards,
+              blink .8s step-end infinite 3.05s; /* blink starts after typing */
+            color: rgba(255,255,255,0.95);
+            margin-top: 8px;
+            font-size: 1.05rem;
+          }
+
+          /* Make sure small screens don't break badly: allow scale down */
+          @media (max-width: 640px) {
+            .home-title { gap: 8px; }
+            .hi-text, .home-name.typing { font-size: 1.6rem; }
+            .typing-effect.typing { font-size: 0.95rem; }
           }
         `}
       </style>
 
       {/* Top Section: Photo + Info */}
       <div className="home-top">
+
         {/* Left: Glowing Photo */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -96,7 +136,7 @@ export default function Home() {
           className="home-info"
         >
           <h1 className="home-title">
-            Hi, I’m{' '}
+            <span className="hi-text">Hi, I’m</span>
             <motion.span
               animate={{ backgroundPositionX: ['0%', '200%'] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
@@ -106,28 +146,41 @@ export default function Home() {
             </motion.span>
           </h1>
 
-          {/* Typing Animated Text */}
-          <p className="typing-effect">
-            Software Engineer | Frontend Developer | Tech Explorer
+          {/* Typing Animated Text with blinking cursor */}
+          <p className="typing-effect typing">
+            Software Engineer | Frontend Developer | Tech Explorer | Cloud Engineer
           </p>
 
           {/* Profession Tags */}
-          <motion.div className="profession-tags">
+          <motion.div className="profession-tags" style={{ marginTop: '1rem' }}>
             {professions.map((role, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.05, background: 'linear-gradient(90deg,var(--accent),var(--accent-2))' }} transition={{ type: 'spring', stiffness: 200 }} className="profession-tag">
+              <motion.div
+                key={i}
+                whileHover={{
+                  scale: 1.05,
+                  background: 'linear-gradient(90deg,var(--accent),var(--accent-2))'
+                }}
+                transition={{ type: 'spring', stiffness: 200 }}
+                className="profession-tag"
+              >
                 {role}
               </motion.div>
             ))}
           </motion.div>
 
           {/* Info Cards */}
-          <motion.div className="info-cards">
+          <motion.div className="info-cards" style={{ marginTop: '1.4rem' }}>
             {[
               { label: '📍 Location', value: 'Guntur, Andhra Pradesh, India' },
               { label: '💼 Expertise', value: 'Cloud Operations' },
               { label: '📧 Contact', value: 'nithinvanga7788@gmail.com' },
             ].map((info, i) => (
-              <motion.div key={i} whileHover={{ y: -4, scale: 1.05 }} transition={{ type: 'spring', stiffness: 250 }} className="info-card">
+              <motion.div
+                key={i}
+                whileHover={{ y: -4, scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 250 }}
+                className="info-card"
+              >
                 <strong>{info.label}</strong>
                 <p>{info.value}</p>
               </motion.div>
@@ -137,7 +190,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Quick Links */}
-      <motion.div className="quick-links">
+      <motion.div className="quick-links" style={{ marginTop: '2.2rem' }}>
         <h2 className="quick-links-title">Connect with me</h2>
         <div className="quick-links-list">
           {quickLinks.map((item, i) => (
@@ -153,7 +206,10 @@ export default function Home() {
               <motion.img
                 src={item.img}
                 alt={item.title}
-                whileHover={{ filter: 'drop-shadow(0 0 15px var(--accent)) brightness(1.2)' }}
+                whileHover={{
+                  filter:
+                    'drop-shadow(0 0 15px var(--accent)) brightness(1.2)'
+                }}
                 className="quick-link-img"
               />
             </motion.a>
