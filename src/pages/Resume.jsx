@@ -56,7 +56,7 @@ export default function Resume() {
               👨‍💻 Vanga Nithin Reddy
             </h3>
             <p style={{ margintop: 10, fontSize: 15, color: "#ccc" }}>
-              4th Year B.Tech — AI & Data Science | S.C.E.T, Sarvajanik University
+              4th Year B.Tech - AI & Data Science | Vasireddy Venkatadri Institute of Technology
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
               📍 Guntur, Andhra Pradesh, India
@@ -104,19 +104,17 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>B.Tech in Artificial Intelligence & Data Science</strong> — S.C.E.T
-              (Sarvajanik University), 2022–2026 <br />
+              <strong>B.Tech in Artificial Intelligence & Data Science</strong> — Vasireddy Venkatadri Institute of Technology, 2022–2026 <br />
               <span style={{ color: "#aaa" }}>GPA: 8.17</span>
             </li>
             <li style={{ marginTop: 8 }}>
-              <strong>12th Board — R.S.M. Poonawala Experimental School</strong> (Gujarat
-              Board, 2022) <br />
-              <span style={{ color: "#aaa" }}>Percentage: 78%</span>
+              <strong>12th Board(BIEAP) — Mathrusri Junior College </strong> (BIEAP, 2022) <br />
+              <span style={{ color: "#aaa" }}>Percentage: 96.1%</span>
             </li>
             <li style={{ marginTop: 8 }}>
-              <strong>10th Board — Ambika Niketan School</strong> (Gujarat Board, 2020)
+              <strong>10th Board — Sri Chaitanya School</strong> (BSEAP, 2020)
               <br />
-              <span style={{ color: "#aaa" }}>Percentage: 85%</span>
+              <span style={{ color: "#aaa" }}>Percentage: 98.5%</span>
             </li>
           </ul>
         </motion.div>
@@ -130,10 +128,9 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
         >
           <h4 style={{ fontSize: 20, color: "#00b4ff", marginBottom: 12 }}>💼 Projects</h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
-            <li>1️⃣ Breast Cancer Detection from Mammograms using YOLO & CNN</li>
-            <li>2️⃣ DocuChat: Document Q&A Chatbot (Gemini API)</li>
-            <li>3️⃣ Indian Sign Language Interpreter (In Progress)</li>
-            <li>4️⃣ Mental Health Analyzer</li>
+            <li>1️⃣ MindMate Using NLP</li>
+            <li>2️⃣ AttendEase - Attendance Management</li>
+            <li>3️⃣ Franchise Management (In Progress)</li>
           </ul>
         </motion.div>
 

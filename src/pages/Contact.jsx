@@ -14,22 +14,16 @@ import "../CSS/Contact.css";
 import "../index.css";
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    contact: "",
-    subject: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", contact: "", subject: "", message: "" });
   const [status, setStatus] = useState("");
   const [sending, setSending] = useState(false);
   const formRef = useRef(null);
 
-  // read env vars (Vite) once at component scope
+  // Vite env vars
   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  // update form fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -37,64 +31,52 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus("");
 
-    // basic validation
+    // simple validation
     if (!form.name || !form.contact || !form.subject || !form.message) {
       setStatus("⚠️ Please fill in all fields.");
       return;
     }
 
+    // enforce contact is an email (Option A)
     const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-    const isEmail = emailPattern.test(form.contact);
-    if (!isEmail && isNaN(form.contact)) {
-      setStatus("⚠️ Please enter a valid email or phone number.");
+    const contactTrim = form.contact.trim();
+    if (!emailPattern.test(contactTrim)) {
+      setStatus("⚠️ Please enter a valid email address in the contact field.");
       return;
     }
 
-    // ensure env vars loaded
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      console.error("EmailJS env missing", { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY });
-      setStatus("❌ Email service not configured. Check your .env and restart dev server.");
+      console.error("Missing EmailJS env vars:", { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY });
+      setStatus("❌ Email service not configured. Check .env and restart dev server.");
       return;
     }
 
     setStatus("Sending...");
     setSending(true);
 
+    // keys must match template: {{name}}, {{title}}, {{message}}, {{email}}
     const templateParams = {
-      from_name: form.name,
-      contact_info: form.contact,
-      subject: form.subject,
-      message: form.message,
+      name: form.name.trim(),
+      title: form.subject.trim(),
+      message: form.message.trim(),
+      email: contactTrim,
     };
+
+    // log the payload for debugging — copy this if it still fails
+    console.log("TEMPLATE PAYLOAD (Option A):", templateParams);
 
     try {
       const res = await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-      console.log("EmailJS success response:", res);
+      console.log("EmailJS success:", res);
       setStatus("✅ Message sent successfully!");
       setForm({ name: "", contact: "", subject: "", message: "" });
     } catch (err) {
-      console.error("EmailJS send ERROR (full):", err);
-
-      let msg = "❌ Failed to send. Try again later.";
-      if (err && err.status) {
-        msg = `❌ Failed (${err.status}).`;
-        if (err.text) msg += ` ${err.text}`;
-      } else if (err && err.message) {
-        msg = `❌ Error: ${err.message}`;
-      } else if (typeof err === "string") {
-        msg = `❌ Error: ${err}`;
-      }
-
-      if (msg.includes("403") || msg.toLowerCase().includes("unauthor")) {
-        msg += " (Check Public Key / Service ID in .env.)";
-      }
-      if (msg.toLowerCase().includes("bad request") || msg.toLowerCase().includes("400")) {
-        msg += " (Check template variable names in EmailJS template.)";
-      }
-
+      console.error("EmailJS send error:", err);
+      let msg = "❌ Failed to send. Check console and EmailJS logs.";
+      if (err && err.status) msg = `❌ Failed (${err.status}). ${err.text || ""}`;
       setStatus(msg);
-      console.info("If you need help, copy-paste this error into chat:", err);
     } finally {
       setSending(false);
     }
@@ -172,10 +154,11 @@ export default function Contact() {
           onChange={handleChange}
           required
         />
+        {/* enforced email input */}
         <input
-          type="text"
+          type="email"
           name="contact"
-          placeholder="Your Email or Phone"
+          placeholder="Your Email"
           value={form.contact}
           onChange={handleChange}
           required
