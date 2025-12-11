@@ -35,8 +35,26 @@ export default function Home() {
       {/* Typing Effect Styles */}
       <style>
         {`
-          @keyframes typing { from { width: 0; } to { width: 100%; } }
+          @keyframes typingName { from { width: 0; } to { width: 100%; } }
           @keyframes blink { 50% { border-color: transparent; } }
+
+          /* Minimal typing style applied only to the name */
+          .home-name.typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            border-right: 2px solid var(--accent);
+            box-sizing: border-box;
+            /* type the name once, then keep cursor blinking */
+            animation: typingName 2.2s steps(22, end) forwards,
+                       blink .7s step-end infinite 2.3s;
+            /* preserve your gradient/text style after typing finishes */
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
         `}
       </style>
 
@@ -61,7 +79,7 @@ export default function Home() {
           >
             <motion.img
               src={photo}
-              alt="Kunj Desai"
+              alt="Vanga Nithin Reddy"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1 }}
@@ -82,7 +100,7 @@ export default function Home() {
             <motion.span
               animate={{ backgroundPositionX: ['0%', '200%'] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-              className="home-name"
+              className="home-name typing"
             >
               Vanga Nithin Reddy
             </motion.span>
