@@ -32,88 +32,90 @@ export default function Home() {
   return (
     <section className="home-section">
 
-     {/* Typing + layout Styles */}
-<style>
-{`
-  /* --- NAME TYPING ANIMATION (NO CURSOR) --- */
-  @keyframes typingName { from { width: 0; } to { width: 100%; } }
+      {/* Typing + layout Styles */}
+      <style>
+        {`
+          /* --- NAME TYPING (no cursor) --- */
+          @keyframes typingName { from { width: 0; } to { width: 100%; } }
 
-  .home-name.typing {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    width: 0;
-    animation: typingName 2.2s steps(22, end) forwards;
+          .home-name.typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typingName 2.2s steps(22, end) forwards;
 
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
 
-    font-size: 2.4rem;
-    /* IMPORTANT: increase line-height so descenders (g,y,p) are visible */
-    line-height: 1.22;
-    vertical-align: baseline;
-  }
+            font-size: 2.4rem;
+            line-height: 1.22;
+            vertical-align: baseline;
+          }
 
-  /* --- TAGLINE TYPING + BLINKING CURSOR --- */
-  @keyframes typingTag { from { width: 0; } to { width: 100%; } }
-  @keyframes blink { 50% { border-color: transparent; } }
+          /* --- TAGLINE TYPING + BLINKING CURSOR (accent color) --- */
+          @keyframes typingTag { from { width: 0; } to { width: 100%; } }
+          @keyframes blink { 50% { border-color: transparent; } }
 
-  .typing-effect.typing {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
+          /* We use fit-content / max-content so the animated width only grows to the text width */
+          .typing-effect.typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
 
-    width: 0;
-    width: fit-content;
-    max-width: max-content;
+            width: 0;                /* start collapsed */
+            width: fit-content;      /* final will fit text */
+            max-width: max-content;  /* ensure no stretching */
 
-    border-right: 2px solid rgba(255,255,255,0.85);
+            /* cursor color matches accent and is a little thicker for visibility */
+            border-right: 3px solid var(--accent);
+            box-sizing: border-box;
 
-    animation:
-      typingTag 3s steps(40, end) forwards,
-      blink .8s step-end infinite 3.05s;
+            /* typingTag: duration and steps tuned to match tagline length.
+               blink starts after typing (delay = typing duration) so the cursor blinks at the end */
+            animation:
+              typingTag 3.2s steps(72, end) forwards,
+              blink .8s step-end infinite 3.25s;
 
-    color: rgba(255,255,255,0.95);
-    margin-top: 8px;
-    font-size: 1.05rem;
-    box-sizing: border-box;
+            color: rgba(255,255,255,0.95);
+            margin-top: 8px;
+            font-size: 1.05rem;
+            line-height: 1.22;
+            vertical-align: baseline;
 
-    /* match text line-height to avoid vertical mismatch with the heading */
-    line-height: 1.22;
-    vertical-align: baseline;
-  }
+            /* a subtle glow to match screenshot (optional) */
+            box-shadow: 0 0 8px rgba(0, 180, 255, 0.06);
+          }
 
-  /* --- GREETING + NAME ON SAME LINE (baseline alignment) --- */
-  .home-title {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    white-space: nowrap;
-    /* small bottom padding so descenders are not clipped by parent */
-    padding-bottom: 4px;
-    line-height: 1.22;
-  }
+          /* Greeting + name inline, baseline aligned */
+          .home-title {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            white-space: nowrap;
+            padding-bottom: 4px;
+            line-height: 1.22;
+          }
 
-  .hi-text {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: white;
-    white-space: nowrap;
-    line-height: 1.22;
-    vertical-align: baseline;
-  }
+          .hi-text {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: white;
+            white-space: nowrap;
+            line-height: 1.22;
+            vertical-align: baseline;
+          }
 
-  /* Mobile-friendly */
-  @media (max-width: 640px) {
-    .home-title { gap: 8px; }
-    .hi-text, .home-name.typing { font-size: 1.6rem; line-height: 1.18; }
-    .typing-effect.typing { font-size: 0.95rem; line-height: 1.18; }
-  }
-`}
-</style>
-
+          /* Mobile-friendly */
+          @media (max-width: 640px) {
+            .home-title { gap: 8px; }
+            .hi-text, .home-name.typing { font-size: 1.6rem; line-height: 1.18; }
+            .typing-effect.typing { font-size: 0.95rem; line-height: 1.18; }
+          }
+        `}
+      </style>
 
       {/* --- TOP SECTION --- */}
       <div className="home-top">
@@ -165,7 +167,7 @@ export default function Home() {
             </motion.span>
           </h1>
 
-          {/* Tagline with blinking cursor */}
+          {/* Tagline with blinking cursor (accent color) */}
           <p className="typing-effect typing">
             Software Engineer | Frontend Developer | Tech Explorer | Cloud Engineer
           </p>
@@ -189,7 +191,7 @@ export default function Home() {
 
           {/* Info Cards */}
           <motion.div className="info-cards" style={{ marginTop: '1.4rem' }}>
-            {[
+            {[ 
               { label: '📍 Location', value: 'Guntur, Andhra Pradesh, India' },
               { label: '💼 Expertise', value: 'Cloud Operations' },
               { label: '📧 Contact', value: 'nithinvanga7788@gmail.com' },

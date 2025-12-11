@@ -208,7 +208,7 @@ const AboutMe = () => {
                     marginBottom: "0.2rem",
                   }}
                 >
-                  <strong>Mathrysri Junior College</strong> - Guntur
+                  <strong>Mathrusri Junior College</strong> - Guntur
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
                   Percentage: 96.10%
