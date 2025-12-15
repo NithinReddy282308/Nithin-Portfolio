@@ -12,16 +12,9 @@ const SKILLS = [
   { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
 
-  // AWS (Simple Icons – FIXED)
-  { name: "AWS EC2", logo: "https://cdn.simpleicons.org/amazonec2/00e5ff" },
-  { name: "AWS S3", logo: "https://cdn.simpleicons.org/amazons3/00e5ff" },
-  { name: "AWS DynamoDB", logo: "https://cdn.simpleicons.org/amazondynamodb/00e5ff" },
-  { name: "AWS CloudWatch", logo: "https://cdn.simpleicons.org/amazoncloudwatch/00e5ff" },
-
-  // GCP
-  { name: "Google Cloud", logo: "https://cdn.simpleicons.org/googlecloud/00e5ff" },
+  // Google Cloud Platform
+  { name: "Google Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
 ];
-
 
 
 const ROWS = [
