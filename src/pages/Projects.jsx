@@ -2,64 +2,32 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 
-// const PROJECTS = [
-//   {
-//     title: '🩺 Mammogram Malignancy Detector',
-//     desc: 'Hybrid CNN + YOLOv8 ensemble for full-image breast cancer detection with ROI preprocessing and sliding-window inference.',
-//     ss: '/mamo.png',
-//     tech: ['TensorFlow', 'Keras', 'OpenCV', 'YOLOv8'],
-//     live: '#',
-//     code: 'https://github.com/kunjdesai/mammo-detector'
-//   },
-//   {
-//   title: '🧠 Mental Health Analyzer',
-//   desc: 'NLP-based system that analyzes user text to detect signs of anxiety, stress, and depression using sentiment analysis and transformer models.',
-//   ss: '/mentalhealth.jpg',
-//   tech: ['Python', 'Transformers', 'NLTK', 'scikit-learn'],
-//   live: 'https://mental-health-analyzer.streamlit.app/',
-//   code: 'https://github.com/kunj2803/Mental-Health-Analyzer'
-//   },
-//   {
-//     title: '🤖 Indian Sign Language Interpreter',
-//     desc: 'Real-time gesture recognition and translation using Mediapipe + TensorFlow, enabling live sign-to-text interpretation.',
-//     ss: '/ISL.png',
-//     tech: ['Mediapipe', 'TensorFlow', 'React', 'Flask'],
-//     live: '#',
-//     code: 'https://github.com/kunjdesai/ISL-Interpreter'
-//   },
-//   {
-//   title: '💼 Portfolio Website',
-//   desc: 'A modern and responsive portfolio built with React and Framer Motion, showcasing projects, skills, and achievements with smooth animations and interactive UI.',
-//   ss: '/portfolio.jpg',
-//   tech: ['React', 'Framer Motion', 'Tailwind CSS'],
-//   live: '#',
-//   code: 'https://github.com/kunj2803/Kunj-Portfolio'
-//   },
-//   {
-//     title: '💬 DocuChat – Gemini AI Chatbot',
-//     desc: 'An intelligent document interaction app powered by Gemini API that understands and answers queries from uploaded PDFs.',
-//     ss: '/Docuchat.png',
-//     tech: ['Gemini API', 'LangChain', 'Python', 'Streamlit'],
-//     live: 'https://docuchat-chatbot.streamlit.app/',
-//     code: 'https://github.com/kunj2803/Docuchat-Chatbot'
-//   },
-//   {
-//     title: '📊 ProfileX – Data Profiler',
-//     desc: 'Smart data profiling and preprocessing web app for CSV datasets — feature summary, missing value handling, and visualization.',
-//     ss: '/ProfileX.png',
-//     tech: ['Streamlit', 'Pandas', 'Plotly'],
-//     live: 'https://profilex.streamlit.app/',
-//     code: 'https://github.com/kunjdesai/ProfileX'
-//   },
-//   {
-//     title: '🧬 Breast Cancer Prediction',
-//     desc: 'ML pipeline using SVC, Random Forest, and XGBoost with SMOTE for imbalanced dataset handling and model optimization.',
-//     ss: '/breastpred.jpg',
-//     tech: ['scikit-learn', 'XGBoost', 'Pandas'],
-//     live: '#',
-//     code: 'https://github.com/kunjdesai/BreastCancerPrediction'
-//   }
-// ]
+const PROJECTS = [
+  {
+  title: '🧠 Mindmate',
+  desc: 'NLP-based system that analyzes user text to detect signs of anxiety, stress, and depression using sentiment analysis and transformer models.',
+  ss: '/mentalhealth.jpg',
+  tech: ['Python', 'Transformers', 'NLTK', 'scikit-learn'],
+  live: '#',
+  code: 'https://github.com/NithinReddy282308/MindMate'
+  },
+  {
+    title: 'Attendance Management System',
+    desc: 'A MERN-stack powered attendance system with role-based access and real-time insights.',
+    ss: '/ATS.png',
+    tech: ['React.js', 'Node.js & Express.js','MongoDB', 'JWT Authentication'],
+    live: '#',
+    code: 'https://github.com/NithinReddy282308/attendance-management'
+  },
+  {
+  title: '💼 Portfolio Website',
+  desc: 'A modern and responsive portfolio built with React and Framer Motion, showcasing projects, skills, and achievements with smooth animations and interactive UI.',
+  ss: '/portfolio.jpg',
+  tech: ['React', 'Framer Motion', 'Tailwind CSS'],
+  live: 'https://nithinreddyvanga.netlify.app/',
+  code: 'https://github.com/NithinReddy282308/Nithin-Portfolio'
+  },
+]
 
 export default function Projects() {
   return (
