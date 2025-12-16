@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const links = [
   { label: "Home", to: "/" },
   { label: "Projects", to: "/projects" },
+  { label: "Experience", to: "/experience" }, // ✅ NEW
   { label: "Skills", to: "/skills" },
   { label: "Certificates", to: "/certificates" },
   { label: "Blog", to: "/blog" },
@@ -12,6 +13,7 @@ const links = [
   { label: "About Me", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
