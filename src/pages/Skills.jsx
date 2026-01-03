@@ -25,7 +25,7 @@ const ROWS = [
     {
       title: "Core Concepts",
       items: [
-        "Data Structures & Algorithms",
+        "Data Structures(Basics)",
         "Machine Learning",
         "Cloud Computing",
         "Operating Systems",
