@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Inter, Segoe UI, Arial, sans-serif">
+<defs><radialGradient id="bg" cx="30%" cy="20%" r="90%"><stop offset="0" stop-color="#0b1a1f"/><stop offset="1" stop-color="#050509"/></radialGradient>
+<linearGradient id="acc" x1="0" x2="1"><stop offset="0" stop-color="#00b4ff"/><stop offset="1" stop-color="#00ffe0"/></linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00ffff" stroke-opacity="0.05"/></pattern>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00ffe0"/></marker></defs>
+<rect width="1200" height="600" fill="url(#bg)"/><rect width="1200" height="600" fill="url(#grid)"/>
+<text x="60" y="80" font-size="34" font-weight="700" fill="url(#acc)">Multi-Cloud Deployment Tool</text>
+<rect x="60" y="98" width="90" height="3" fill="url(#acc)"/>
+<line x1="286" y1="293" x2="392" y2="293" stroke="#00ffe0" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+<line x1="626" y1="248" x2="752" y2="199" stroke="#00ffe0" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+<line x1="626" y1="293" x2="752" y2="293" stroke="#00ffe0" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+<line x1="626" y1="338" x2="752" y2="387" stroke="#00ffe0" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+<line x1="510" y1="434" x2="510" y2="344" stroke="#00ffe0" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+<rect x="60" y="250" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="170.0" y="288" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">Git Push</text>
+<text x="170.0" y="314" font-size="14" fill="#67e8f9" text-anchor="middle">GitHub · GitLab</text>
+<rect x="400" y="250" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="510.0" y="288" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">Deploy Tool</text>
+<text x="510.0" y="314" font-size="14" fill="#67e8f9" text-anchor="middle">one workflow</text>
+<rect x="760" y="110" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="870.0" y="148" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">Google Cloud</text>
+<text x="870.0" y="174" font-size="14" fill="#67e8f9" text-anchor="middle">Compute Engine · Run</text>
+<rect x="760" y="250" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="870.0" y="288" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">AWS</text>
+<text x="870.0" y="314" font-size="14" fill="#67e8f9" text-anchor="middle">Amazon Web Services</text>
+<rect x="760" y="390" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="870.0" y="428" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">Cloudflare</text>
+<text x="870.0" y="454" font-size="14" fill="#67e8f9" text-anchor="middle">Tunnels · no open ports</text>
+<rect x="400" y="440" width="220" height="86" rx="16" fill="#0a1418" stroke="#00ffff" stroke-opacity="0.35" stroke-width="1.5"/>
+<text x="510.0" y="478" font-size="20" font-weight="600" fill="#e6eef8" text-anchor="middle">Cost Tracking</text>
+<text x="510.0" y="504" font-size="14" fill="#67e8f9" text-anchor="middle">within budget</text>
+</svg>

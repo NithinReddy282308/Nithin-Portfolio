@@ -17,7 +17,7 @@ const AboutMe = () => {
         padding: "3rem 1rem",
       }}
     >
-      {/* --- About Me + Education Section --- */}
+      {/* About Me + Education Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ const AboutMe = () => {
           backdropFilter: "blur(10px)",
         }}
       >
-        {/* --- Header --- */}
+        {/* Header */}
         <h2
           style={{
             fontSize: "1.9rem",
@@ -48,7 +48,7 @@ const AboutMe = () => {
           About Me
         </h2>
 
-        {/* --- Description --- */}
+        {/* Description */}
         <p
           style={{
             fontSize: "1.1rem",
@@ -85,12 +85,13 @@ const AboutMe = () => {
           I’m currently pursuing my{" "}
           <strong>B.Tech in Artificial Intelligence and Data Science</strong> at
           VVIT, Guntur, while working as a{" "}
-          <strong>Freelance Software Developer</strong> at Srireina
+          <strong>Senior Consultant</strong> at Srireina
           Technologies. I specialize in{" "}
           <strong>cloud operations</strong>,{" "}
-          <strong>secure system deployment</strong> and{" "}
-          <strong>full-stack web application development</strong> for CV-based
-          and online-proctored exam platforms.
+          <strong>serverless backends on AWS</strong>,{" "}
+          <strong>multi-tenant platforms</strong> and{" "}
+          <strong>secure system deployment</strong>, with 3+ years of
+          experience building and shipping production web apps on AWS and GCP.
           <br />
           <br />
           Known for strong <strong>problem-solving abilities</strong>,{" "}
@@ -101,7 +102,7 @@ const AboutMe = () => {
           with practical engineering while maintaining academic excellence.
         </p>
 
-        {/* --- Education Section --- */}
+        {/* Education Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +129,7 @@ const AboutMe = () => {
               gap: "1.2rem",
             }}
           >
-            {/* --- Education Card 1 --- */}
+            {/* Education Card 1 */}
             <motion.div
               whileHover={{
                 scale: 1.02,
@@ -169,11 +170,11 @@ const AboutMe = () => {
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
                   4th Year (Pursuing) 
                 </p>
-                <p style={{ color: "rgba(255,255,255,0.7)" }}>2022 – 2026</p>
+                <p style={{ color: "rgba(255,255,255,0.7)" }}>2022 - 2026</p>
               </div>
             </motion.div>
 
-            {/* --- Education Card 2 --- */}
+            {/* Education Card 2 */}
             <motion.div
               whileHover={{
                 scale: 1.02,
@@ -217,7 +218,7 @@ const AboutMe = () => {
               </div>
             </motion.div>
 
-            {/* --- Education Card 3 --- */}
+            {/* Education Card 3 */}
             <motion.div
               whileHover={{
                 scale: 1.02,

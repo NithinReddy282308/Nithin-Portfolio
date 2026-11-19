@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "Home", to: "/" },
   { label: "Projects", to: "/projects" },
-  { label: "Experience", to: "/experience" }, // ✅ NEW
+  { label: "Experience", to: "/experience" },
   { label: "Skills", to: "/skills" },
   { label: "Certificates", to: "/certificates" },
   { label: "Blog", to: "/blog" },
@@ -14,30 +14,14 @@ const links = [
   { label: "Contact", to: "/contact" },
 ];
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showButton, setShowButton] = useState(false);
-  const navRef = useRef(null);
-  const linksRef = useRef(null);
-
-  // Check if links overflow nav width (to show hamburger)
-  const checkOverflow = () => {
-    if (!navRef.current || !linksRef.current) return;
-    setShowButton(linksRef.current.scrollWidth > navRef.current.offsetWidth);
-  };
-
-  useEffect(() => {
-    checkOverflow();
-    window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
-  }, []);
 
   return (
     <>
-      {/* --- Navbar --- */}
+      {/* Navbar */}
       <nav
-        ref={navRef}
+        className="site-nav"
         style={{
           position: "sticky",
           top: 0,
@@ -45,7 +29,7 @@ export default function Navbar() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "1rem 2rem",
+          gap: "1.5rem",
           borderBottom: "1px solid rgba(255,255,255,0.1)",
           background: "rgba(0,0,0,0.6)",
           backdropFilter: "blur(10px)",
@@ -77,9 +61,8 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div
-          ref={linksRef}
+          className="nav-desktop-links"
           style={{
-            display: showButton ? "none" : "flex",
             justifyContent: "center",
             gap: "2rem",
             alignItems: "center",
@@ -141,10 +124,10 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Hamburger */}
-        {showButton && (
-          <div className="mobile-btn">
+        {/* Hamburger (shown below the desktop breakpoint via CSS) */}
+        <div className="nav-toggle">
             <button
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               style={{
                 background: "none",
                 border: "none",
@@ -157,17 +140,17 @@ export default function Navbar() {
             >
               {isOpen ? "✕" : "☰"}
             </button>
-          </div>
-        )}
+        </div>
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
+      {/* Mobile Dropdown Menu */}
       <AnimatePresence>
-        {isOpen && showButton && (
+        {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
+            className="nav-mobile-menu"
             style={{
               position: "fixed",
               top: 0,
@@ -185,6 +168,7 @@ export default function Navbar() {
             }}
           >
             <button
+              aria-label="Close menu"
               style={{
                 position: "absolute",
                 top: "1rem",

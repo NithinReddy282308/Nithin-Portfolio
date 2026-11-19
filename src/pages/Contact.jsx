@@ -1,17 +1,8 @@
-// src/pages/Contact.jsx
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { send } from "@emailjs/browser"; // ensure @emailjs/browser is installed
-
-import githubLogo from "../../public/github.png";
-import linkedinLogo from "../../public/linkedin.png";
-import gmailLogo from "../../public/gmail.png";
-import whatsappLogo from "../../public/whatsapp.png";
-// import instagramLogo from "../../public/insta.png";
-// import facebookLogo from "../../public/facebook.png";
+import { send } from "@emailjs/browser";
 
 import "../CSS/Contact.css";
-import "../index.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", contact: "", subject: "", message: "" });
@@ -39,7 +30,7 @@ export default function Contact() {
       return;
     }
 
-    // enforce contact is an email (Option A)
+    // enforce contact is an email
     const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     const contactTrim = form.contact.trim();
     if (!emailPattern.test(contactTrim)) {
@@ -64,12 +55,8 @@ export default function Contact() {
       email: contactTrim,
     };
 
-    // log the payload for debugging — copy this if it still fails
-    console.log("TEMPLATE PAYLOAD (Option A):", templateParams);
-
     try {
-      const res = await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-      console.log("EmailJS success:", res);
+      await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       setStatus("✅ Message sent successfully!");
       setForm({ name: "", contact: "", subject: "", message: "" });
     } catch (err) {
@@ -83,10 +70,10 @@ export default function Contact() {
   };
 
   const quickLinks = [
-    { img: githubLogo, title: "GitHub", link: "https://github.com/NithinReddy282308" },
-    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vanganithinreddy/" },
-    { img: gmailLogo, title: "Email", link: "mailto:nithinvanga7788@gmail.com" },
-    { img: whatsappLogo, title: "WhatsApp", link: "https://wa.me/+919177713081" },
+    { img: "/github.png", title: "GitHub", link: "https://github.com/NithinReddy282308" },
+    { img: "/linkedin.png", title: "LinkedIn", link: "https://www.linkedin.com/in/vanganithinreddy/" },
+    { img: "/gmail.png", title: "Email", link: "mailto:nithinrvanga@gmail.com" },
+    { img: "/whatsapp.png", title: "WhatsApp", link: "https://wa.me/+919177713081" },
   ];
 
   return (

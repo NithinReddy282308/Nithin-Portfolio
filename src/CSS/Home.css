@@ -11,7 +11,7 @@
   color: #fff;
 }
 
-/* --- top row container --- */
+/* top row container */
 .home-top {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@
 /* Info Section */
 .home-info {
   flex: 1;
-  min-width: 360px;
+  min-width: min(360px, 100%);
   max-width: 700px;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@
   overflow: visible;
 }
 
-/* --- HEADING: keep greeting + name aligned and avoid clipping --- */
+/* HEADING: keep greeting + name aligned and avoid clipping */
 .home-title {
   font-size: 3rem;
   font-weight: 700;
@@ -166,20 +166,6 @@
 }
 
 /* Quick Links */
-.quick-links {
-  text-align: center;
-  margin-top: 1.2rem;
-}
-.quick-links h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-.quick-links-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 22px;
-}
 .quick-link-img {
   width: 50px;
   height: 50px;
@@ -192,9 +178,9 @@
 .quick-links {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers everything horizontally */
+  align-items: center;
   gap: 1rem;
-  margin-top: 3rem;
+  text-align: center;
 }
 
 .quick-links-title {
@@ -205,14 +191,16 @@
 
 .quick-links-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: center; /* ensures icons are centered */
+  justify-content: center;
 }
 
 /* Responsive tweaks */
 @media (max-width: 880px) {
   .photo-container { flex: 0 0 300px; }
   .photo-frame { width: 260px; height: 260px; }
+  .photo-ring { width: 300px; height: 300px; }
   .home-title { font-size: 2.2rem; padding-bottom: 3px; }
   .hi-text, .home-name { font-size: 2.2rem; line-height: 1.18; }
 }
@@ -221,7 +209,104 @@
   .home-top { padding: 0 1rem; gap: 1.2rem; }
   .photo-container { flex: 0 0 220px; }
   .photo-frame { width: 190px; height: 190px; }
+  .photo-ring { width: 230px; height: 230px; }
+  .home-section { padding: 2rem 1rem 1rem; }
   .home-title { font-size: 1.6rem; padding-bottom: 2px; gap: 8px; }
   .hi-text, .home-name { font-size: 1.6rem; line-height: 1.12; }
   .typing-effect { font-size: 0.95rem; }
+}
+
+/* Typing animations */
+/* NAME TYPING (no cursor) */
+@keyframes typingName { from { width: 0; } to { width: 100%; } }
+
+.home-name.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typingName 2.2s steps(22, end) forwards;
+
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-size: 2.4rem;
+  line-height: 1.22;
+  vertical-align: baseline;
+}
+
+/* TAGLINE TYPING + BLINKING CURSOR (accent color) */
+@keyframes typingTag { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* We use fit-content / max-content so the animated width only grows to the text width */
+.typing-effect.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+
+  width: 0;                /* start collapsed */
+  width: fit-content;      /* final will fit text */
+  max-width: max-content;  /* ensure no stretching */
+
+  /* cursor color matches accent and is a little thicker for visibility */
+  border-right: 3px solid var(--accent);
+  box-sizing: border-box;
+
+  /* typingTag: duration and steps tuned to match tagline length.
+     blink starts after typing (delay = typing duration) so the cursor blinks at the end */
+  animation:
+    typingTag 3.2s steps(72, end) forwards,
+    blink .8s step-end infinite 3.25s;
+
+  color: rgba(255,255,255,0.95);
+  margin-top: 8px;
+  font-size: 1.05rem;
+  line-height: 1.22;
+  vertical-align: baseline;
+
+  /* a subtle glow to match screenshot (optional) */
+  box-shadow: 0 0 8px rgba(0, 180, 255, 0.06);
+}
+
+/* Greeting + name inline, baseline aligned */
+.home-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  white-space: nowrap;
+  padding-bottom: 4px;
+  line-height: 1.22;
+}
+
+.hi-text {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  line-height: 1.22;
+  vertical-align: baseline;
+}
+
+/* Mobile-friendly */
+@media (max-width: 640px) {
+  .home-title { gap: 8px; }
+  .hi-text, .home-name.typing { font-size: 1.6rem; line-height: 1.18; }
+  .typing-effect.typing { font-size: 0.95rem; line-height: 1.18; }
+}
+
+/* Small phones: let the name and tagline wrap instead of overflowing.
+   !important beats the typing keyframes' width without toggling the animation
+   (toggling `animation` restarts it and leaves the text blank mid-way). */
+@media (max-width: 480px) {
+  .home-title { flex-wrap: wrap; white-space: normal; justify-content: center; text-align: center; }
+  .home-name.typing,
+  .typing-effect.typing {
+    width: auto !important;
+    white-space: normal;
+    border-right: none;
+  }
+  .typing-effect.typing { text-align: center; }
 }

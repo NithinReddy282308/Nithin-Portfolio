@@ -76,7 +76,7 @@ export default function Blog() {
         📝 My Blog
       </motion.h2>
       <p className="blog-sub">
-        Personal thoughts, experiences, and reflections — feel free to react!
+        Personal thoughts, experiences, and reflections - feel free to react!
       </p>
 
       <div className="blog-grid">

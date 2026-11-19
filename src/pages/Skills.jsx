@@ -2,24 +2,61 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import "./Skills.css";
 
-const SKILLS = [
-  { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-  { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-  { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-  { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-  { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-  { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-  { name: "Google Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
-];
+const DEV = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
+// `invert` lightens dark/monochrome logos so they stay visible on the dark stage
+const SKILLS = [
+  { name: "Python", logo: `${DEV}/python/python-original.svg` },
+  { name: "Go", logo: `${DEV}/go/go-original-wordmark.svg` },
+  { name: "Dart", logo: `${DEV}/dart/dart-original.svg` },
+  { name: "JavaScript", logo: `${DEV}/javascript/javascript-original.svg` },
+  { name: "PHP", logo: `${DEV}/php/php-original.svg` },
+  { name: "HTML", logo: `${DEV}/html5/html5-original.svg` },
+  { name: "CSS", logo: `${DEV}/css3/css3-original.svg` },
+  { name: "React", logo: `${DEV}/react/react-original.svg` },
+  { name: "Flutter", logo: `${DEV}/flutter/flutter-original.svg` },
+  { name: "Node.js", logo: `${DEV}/nodejs/nodejs-original.svg` },
+  { name: "Express", logo: `${DEV}/express/express-original.svg`, invert: true },
+  { name: "FastAPI", logo: `${DEV}/fastapi/fastapi-original.svg` },
+  { name: "Laravel", logo: `${DEV}/laravel/laravel-original.svg` },
+  { name: "AWS", logo: `${DEV}/amazonwebservices/amazonwebservices-original.svg`, invert: true },
+  { name: "DynamoDB", logo: `${DEV}/dynamodb/dynamodb-original.svg` },
+  { name: "Google Cloud", logo: `${DEV}/googlecloud/googlecloud-original.svg` },
+  { name: "Cloudflare", logo: `${DEV}/cloudflare/cloudflare-original.svg` },
+  { name: "MongoDB", logo: `${DEV}/mongodb/mongodb-original.svg` },
+  { name: "MySQL", logo: `${DEV}/mysql/mysql-original.svg` },
+  { name: "Docker", logo: `${DEV}/docker/docker-original.svg` },
+  { name: "Git", logo: `${DEV}/git/git-original.svg` },
+  { name: "GitHub", logo: `${DEV}/github/github-original.svg`, invert: true },
+  { name: "GitLab", logo: `${DEV}/gitlab/gitlab-original.svg` },
+  { name: "GH Actions", logo: `${DEV}/githubactions/githubactions-original.svg` },
+  { name: "Stripe", logo: "https://cdn.simpleicons.org/stripe/635BFF" },
+];
 
 const ROWS = [
   [
-    { title: "Programming Languages", items: ["Python"] },
-    { title: "Web Technologies", items: ["HTML", "CSS", "JavaScript", "React"] },
-    { title: "Databases & Tools", items: ["MySQL", "MongoDB", "Git"] },
+    { title: "Programming Languages", items: ["Python", "Go", "Dart", "JavaScript", "PHP"] },
+    {
+      title: "Backend",
+      items: ["REST APIs", "Node.js & Express", "FastAPI", "Laravel", "JWT Auth (Cognito)", "RBAC & Multi-Tenancy"],
+    },
+    {
+      title: "Cloud",
+      items: [
+        "AWS (Lambda, API Gateway, DynamoDB, SQS, CDK)",
+        "AWS Rekognition",
+        "GCP (Compute Engine, Cloud Run)",
+        "Cloudflare Tunnels",
+      ],
+    },
+  ],
+  [
+    { title: "Web & Mobile", items: ["HTML", "CSS", "React", "Flutter (Android, iOS, Web, Desktop)"] },
+    { title: "Databases", items: ["MongoDB", "DynamoDB", "MySQL"] },
+    {
+      title: "DevOps & Tools",
+      items: ["Git (GitHub, GitLab)", "GitHub Actions (CD)", "Docker (Lambda builds)", "Stripe & Razorpay"],
+    },
   ],
   [
     {
@@ -29,12 +66,13 @@ const ROWS = [
         "Machine Learning",
         "Cloud Computing",
         "Operating Systems",
-
+        "Serverless Architecture",
+        "Application Security",
       ],
     },
     {
       title: "Soft Skills",
-      items: ["Versatile", "Problem Solving", "Creativity", "Adaptability", "Communication"],
+      items: ["Versatile", "Problem Solving", "Creativity", "Adaptability", "Communication", "Client Collaboration"],
     },
   ],
 ];
@@ -46,32 +84,47 @@ export default function Skills() {
     const stage = stageRef.current;
     if (!stage) return;
     const circles = Array.from(stage.querySelectorAll(".skill-circle"));
+
+    // Small screens: CSS lays the orbs out in a wrapping grid; just add a gentle float
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      const anims = circles.map((circle) =>
+        circle.animate(
+          [{ transform: "translateY(0)" }, { transform: "translateY(-6px)" }],
+          {
+            duration: 2500 + Math.random() * 1500,
+            direction: "alternate",
+            iterations: Infinity,
+            easing: "ease-in-out",
+          }
+        )
+      );
+      return () => anims.forEach((a) => a.cancel());
+    }
+
     const rect = stage.getBoundingClientRect();
     const placed = [];
+    const DRIFT = 40;
 
     const isOverlapping = (x, y, size) =>
-      placed.some((p) => {
-        const dx = p.x - x;
-        const dy = p.y - y;
-        return Math.sqrt(dx * dx + dy * dy) < p.size / 2 + size / 2 + 40;
-      });
+      placed.some((p) => Math.hypot(p.x - x, p.y - y) < p.size / 2 + size / 2 + 12);
 
-    circles.forEach((circle) => {
+    const anims = circles.map((circle) => {
       const size = circle.offsetWidth;
       let x, y, tries = 0;
+      // keep a DRIFT margin so floating orbs never slide out of the stage
       do {
-        x = Math.random() * (rect.width - size - 20);
-        y = Math.random() * (rect.height - size - 20);
+        x = DRIFT + Math.random() * (rect.width - size - DRIFT * 2);
+        y = DRIFT + Math.random() * (rect.height - size - DRIFT * 2);
         tries++;
-      } while (isOverlapping(x, y, size) && tries < 150);
+      } while (isOverlapping(x, y, size) && tries < 400);
 
       placed.push({ x, y, size });
       circle.style.left = `${x}px`;
       circle.style.top = `${y}px`;
 
-      const dx = (Math.random() - 0.5) * 100;
-      const dy = (Math.random() - 0.5) * 100;
-      circle.animate(
+      const dx = (Math.random() - 0.5) * DRIFT * 2;
+      const dy = (Math.random() - 0.5) * DRIFT * 2;
+      return circle.animate(
         [{ transform: "translate(0, 0)" }, { transform: `translate(${dx}px, ${dy}px)` }],
         {
           duration: 5000 + Math.random() * 2000,
@@ -81,40 +134,30 @@ export default function Skills() {
         }
       );
     });
+    return () => anims.forEach((a) => a.cancel());
   }, []);
 
   return (
     <section className="skills-container" id="skills">
-      {/* Header */}
       <motion.div
         className="skills-header"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h2 className="text-5xl text-cyan-400 font-semibold mb-3">My Skills</h2>
-        <div className="w-28 h-[2px] bg-cyan-400 mx-auto mb-6"></div>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
-          ✨ Technical expertise blended with creativity - explore my core competencies below.
-        </p>
+        <h2>My Skills</h2>
+        <div className="underline"></div>
+        <p>✨ Technical expertise blended with creativity - explore my core competencies below.</p>
       </motion.div>
 
-      {/* Floating Orbs with page-load + hover highlight animation */}
+      {/* Floating skill orbs */}
       <motion.div
-        className="skills-stage relative mx-auto mb-20"
+        className="skills-stage"
         ref={stageRef}
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        style={{
-          width: "100%",
-          height: "550px",
-          borderRadius: "25px",
-          background: "radial-gradient(circle at 50% 50%, #0a0a0a, #101010)",
-          overflow: "hidden",
-          boxShadow: "inset 0 0 60px rgba(0,255,255,0.07)",
-          position: "relative",
-        }}
       >
         {SKILLS.map((s, i) => (
           <motion.div
@@ -128,53 +171,19 @@ export default function Skills() {
               boxShadow: "0 0 35px 10px rgba(0,255,255,0.6)",
               background: "rgba(0,255,255,0.12)",
             }}
-            style={{
-              width: "110px",
-              height: "110px",
-              borderRadius: "50%",
-              position: "absolute",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "rgba(0,255,255,0.06)",
-              border: "1px solid rgba(0,255,255,0.25)",
-              backdropFilter: "blur(8px)",
-              cursor: "pointer",
-              transition: "box-shadow 0.4s ease, background 0.4s ease",
-            }}
           >
             <motion.img
               src={s.logo}
               alt={s.name}
-              style={{
-                width: "50px",
-                height: "50px",
-                objectFit: "contain",
-                filter: "drop-shadow(0 0 8px rgba(0,255,255,0.4)) brightness(1.2)",
-                marginBottom: "5px",
-              }}
-              whileHover={{
-                filter: "drop-shadow(0 0 12px rgba(0,255,255,0.9)) brightness(1.6)",
-                rotate: [0, 6, -6, 0],
-                transition: { duration: 0.5 },
-              }}
+              className={s.invert ? "invert" : undefined}
+              whileHover={{ rotate: [0, 6, -6, 0], transition: { duration: 0.5 } }}
             />
-            <span
-              style={{
-                color: "rgba(180,255,255,0.9)",
-                fontSize: "13px",
-                fontWeight: 500,
-                letterSpacing: "0.3px",
-              }}
-            >
-              {s.name}
-            </span>
+            <span>{s.name}</span>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Skills Table (Text Section) */}
+      {/* Skill categories */}
       <div className="skills-table">
         {ROWS.map((row, rowIndex) => (
           <div key={rowIndex} className="skills-row">
@@ -184,16 +193,14 @@ export default function Skills() {
                 className="skill-box"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                transition={{
-                  duration: 0.6,
-                  delay: (rowIndex + colIndex) * 0.1,
-                }}
+                transition={{ duration: 0.6, delay: (rowIndex + colIndex) * 0.1 }}
               >
                 <h3>{col.title}</h3>
                 <ul>
-                  {col.items.map((item, i) => (
-                    <motion.li key={i} whileHover={{ x: 6, color: "#00ffc8" }}>
+                  {col.items.map((item) => (
+                    <motion.li key={item} whileHover={{ x: 6, color: "#00ffc8" }}>
                       {item}
                     </motion.li>
                   ))}

@@ -1,14 +1,17 @@
 .blog-section {
   width: 100%;
+  min-height: 100vh;
   padding: 3rem 8%;
-  color: white;
+  background: radial-gradient(circle at top left, #0b0e14, #000);
+  color: #fff;
   text-align: center;
 }
 
 .blog-title {
   font-size: 2rem;
-  margin-bottom: 0.2rem; /* less top margin */
+  margin-bottom: 0.2rem;
   color: #fff;
+  letter-spacing: 1px;
 }
 
 .blog-sub {
@@ -19,18 +22,26 @@
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
   gap: 2rem;
   justify-items: center;
 }
 
 .blog-post {
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(80, 100, 160, 0.2);
   border-radius: 16px;
   padding: 1.8rem;
   width: 100%;
+  color: #cfd3e0;
   text-align: left;
   transition: all 0.3s ease;
+}
+
+.blog-post:hover {
+  border-color: #4c7bff;
+  background: rgba(20, 25, 40, 0.9);
+  transform: translateY(-4px);
 }
 
 .post-title {
@@ -43,7 +54,7 @@
   color: #ccc;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin: 15px 0 1.5rem;
 }
 
 /* vote buttons */
@@ -51,6 +62,7 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  margin-top: 15px;
 }
 
 .vote-btn-circle {

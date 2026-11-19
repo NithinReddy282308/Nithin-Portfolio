@@ -1,0 +1,88 @@
+.experience-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1rem;
+}
+
+.experience-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.experience-header .section-subtitle {
+  max-width: 42rem;
+  margin-bottom: 0;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.experience-card {
+  background: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.08);
+}
+
+.experience-role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #22d3ee;
+  margin: 0;
+}
+
+.experience-meta {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0.25rem 0 1rem;
+}
+
+.experience-points {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #d1d5db;
+  line-height: 1.625;
+}
+
+.experience-points li + li {
+  margin-top: 0.75rem;
+}
+
+.experience-project {
+  margin-top: 1.75rem;
+}
+
+.experience-project h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #67e8f9;
+  margin: 0;
+}
+
+.experience-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.experience-stack span {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  color: #a5f3fc;
+  background: rgba(34, 211, 238, 0.05);
+}
+
+@media (max-width: 640px) {
+  .experience-section { padding: 3rem 1rem; }
+  .experience-card { padding: 1.25rem; }
+}

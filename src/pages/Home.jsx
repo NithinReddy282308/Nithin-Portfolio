@@ -1,16 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import "../CSS/Home.css"
-import '../index.css' 
-
-// 🖼️ Import Assets
-import photo from '../../public/photo.jpg'
-import githubLogo from '../../public/github.png'
-import linkedinLogo from '../../public/linkedin.png'
-import gmailLogo from '../../public/gmail.png'
-import whatsappLogo from '../../public/whatsapp.png'
-// import instagramLogo from '../../public/insta.png'
-// import facebookLogo from '../../public/facebook.png'
+import '../CSS/Home.css'
 
 export default function Home() {
   const professions = [
@@ -23,101 +13,16 @@ export default function Home() {
   ]
 
   const quickLinks = [
-    { img: githubLogo, title: 'GitHub', link: 'https://github.com/NithinReddy282308' },
-    { img: linkedinLogo, title: 'LinkedIn', link: 'https://www.linkedin.com/in/vanganithinreddy/' },
-    { img: gmailLogo, title: 'Email', link: 'mailto:nithinvanga7788@gmail.com' },
-    { img: whatsappLogo, title: 'WhatsApp', link: 'https://wa.me/+919177713081' },
+    { img: '/github.png', title: 'GitHub', link: 'https://github.com/NithinReddy282308' },
+    { img: '/linkedin.png', title: 'LinkedIn', link: 'https://www.linkedin.com/in/vanganithinreddy/' },
+    { img: '/gmail.png', title: 'Email', link: 'mailto:nithinrvanga@gmail.com' },
+    { img: '/whatsapp.png', title: 'WhatsApp', link: 'https://wa.me/+919177713081' },
   ]
 
   return (
     <section className="home-section">
 
-      {/* Typing + layout Styles */}
-      <style>
-        {`
-          /* --- NAME TYPING (no cursor) --- */
-          @keyframes typingName { from { width: 0; } to { width: 100%; } }
-
-          .home-name.typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 0;
-            animation: typingName 2.2s steps(22, end) forwards;
-
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-
-            font-size: 2.4rem;
-            line-height: 1.22;
-            vertical-align: baseline;
-          }
-
-          /* --- TAGLINE TYPING + BLINKING CURSOR (accent color) --- */
-          @keyframes typingTag { from { width: 0; } to { width: 100%; } }
-          @keyframes blink { 50% { border-color: transparent; } }
-
-          /* We use fit-content / max-content so the animated width only grows to the text width */
-          .typing-effect.typing {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-
-            width: 0;                /* start collapsed */
-            width: fit-content;      /* final will fit text */
-            max-width: max-content;  /* ensure no stretching */
-
-            /* cursor color matches accent and is a little thicker for visibility */
-            border-right: 3px solid var(--accent);
-            box-sizing: border-box;
-
-            /* typingTag: duration and steps tuned to match tagline length.
-               blink starts after typing (delay = typing duration) so the cursor blinks at the end */
-            animation:
-              typingTag 3.2s steps(72, end) forwards,
-              blink .8s step-end infinite 3.25s;
-
-            color: rgba(255,255,255,0.95);
-            margin-top: 8px;
-            font-size: 1.05rem;
-            line-height: 1.22;
-            vertical-align: baseline;
-
-            /* a subtle glow to match screenshot (optional) */
-            box-shadow: 0 0 8px rgba(0, 180, 255, 0.06);
-          }
-
-          /* Greeting + name inline, baseline aligned */
-          .home-title {
-            display: flex;
-            align-items: baseline;
-            gap: 14px;
-            white-space: nowrap;
-            padding-bottom: 4px;
-            line-height: 1.22;
-          }
-
-          .hi-text {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: white;
-            white-space: nowrap;
-            line-height: 1.22;
-            vertical-align: baseline;
-          }
-
-          /* Mobile-friendly */
-          @media (max-width: 640px) {
-            .home-title { gap: 8px; }
-            .hi-text, .home-name.typing { font-size: 1.6rem; line-height: 1.18; }
-            .typing-effect.typing { font-size: 0.95rem; line-height: 1.18; }
-          }
-        `}
-      </style>
-
-      {/* --- TOP SECTION --- */}
+      {/* TOP SECTION */}
       <div className="home-top">
 
         {/* Photo Section */}
@@ -138,7 +43,7 @@ export default function Home() {
             className="photo-frame"
           >
             <motion.img
-              src={photo}
+              src="/photo.jpg"
               alt="Vanga Nithin Reddy"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -192,9 +97,9 @@ export default function Home() {
           {/* Info Cards */}
           <motion.div className="info-cards" style={{ marginTop: '1.4rem' }}>
             {[ 
-              { label: '📍 Location', value: 'Guntur, Andhra Pradesh, India' },
-              { label: '💼 Expertise', value: 'Cloud Operations' },
-              { label: '📧 Contact', value: 'nithinvanga7788@gmail.com' },
+              { label: '📍 Location', value: 'Hyderabad, Telangana, India' },
+              { label: '💼 Expertise', value: 'Agentic AI & Claude Code' },
+              { label: '📧 Contact', value: 'nithinrvanga@gmail.com' },
             ].map((info, i) => (
               <motion.div
                 key={i}

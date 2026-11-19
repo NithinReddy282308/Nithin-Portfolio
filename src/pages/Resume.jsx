@@ -55,14 +55,14 @@ export default function Resume() {
             <h3 style={{ fontSize: 24, color: "#00b4ff", marginBottom: 4 }}>
               👨‍💻 Vanga Nithin Reddy
             </h3>
-            <p style={{ margintop: 10, fontSize: 15, color: "#ccc" }}>
-              4th Year B.Tech - AI & Data Science | Vasireddy Venkatadri Institute of Technology
+            <p style={{ marginTop: 10, fontSize: 15, color: "#ccc" }}>
+              Senior Consultant @ Srireina Technologies | B.Tech - AI & Data Science, VVIT
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
-              📍 Guntur, Andhra Pradesh, India
+              📍 Hyderabad, Telangana, India
             </p>
             <p style={{ margin: "4px 0", fontSize: 14, color: "#aaa" }}>
-              ✉️ nithinvanga7788@gmail.com | 📞 +91 9177713081
+              ✉️ nithinrvanga@gmail.com | 📞 +91 9177713081
             </p>
           </div>
 
@@ -80,8 +80,10 @@ export default function Resume() {
           >
             <strong style={{ color: "#00b4ff" }}>Professional Summary:</strong>
             <p style={{ marginTop: 6, color: "#ccc" }}>
-            Results-driven B.Tech student inArtificial Intelligence and DataScience at VVIT, Guntur,concurrently working as a Freelance Software Developer at Srireina Technologies. Skilled in cloud operations, secure system deployment, and web application management for CV-based and online-proctored exam portals. Recognized for astute problem solving, versatile technical
-proficiency, and time-prioritized execution, with a proven ability to spearhead innovative, ML-integrated solutions while maintaining academic excellence.
+              Software engineer with 3+ years of experience at Srireina Technologies, working since November 2022
+              while completing a B.Tech in AI &amp; Data Science. Building and deploying web applications on AWS and
+              GCP, most recently a multi-tenant Node.js/MongoDB platform and a serverless Go backend on AWS Lambda,
+              with a focus on secure data access and production debugging.
             </p>
           </motion.div>
         </motion.div>
@@ -104,15 +106,15 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>
-              <strong>B.Tech in Artificial Intelligence & Data Science</strong> — Vasireddy Venkatadri Institute of Technology, 2022–2026 <br />
-              <span style={{ color: "#aaa" }}>GPA: 8.17</span>
+              <strong>B.Tech in Artificial Intelligence & Data Science</strong> - Vasireddy Venkatadri Institute of Technology, 2022-2026 <br />
+              <span style={{ color: "#aaa" }}>CGPA: 8.22</span>
             </li>
             <li style={{ marginTop: 8 }}>
-              <strong>12th Board(BIEAP) — Mathrusri Junior College </strong> (BIEAP, 2022) <br />
+              <strong>12th Board(BIEAP) - Mathrusri Junior College </strong> (BIEAP, 2022) <br />
               <span style={{ color: "#aaa" }}>Percentage: 96.1%</span>
             </li>
             <li style={{ marginTop: 8 }}>
-              <strong>10th Board — Sri Chaitanya School</strong> (BSEAP, 2020)
+              <strong>10th Board - Sri Chaitanya School</strong> (BSEAP, 2020)
               <br />
               <span style={{ color: "#aaa" }}>Percentage: 98.5%</span>
             </li>
@@ -130,7 +132,8 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
           <ul style={{ listStyle: "none", padding: 0, margin: 0, lineHeight: 1.8 }}>
             <li>1️⃣ MindMate Using NLP</li>
             <li>2️⃣ AttendEase - Attendance Management</li>
-            <li>3️⃣ Franchise Management (In Progress)</li>
+            <li>3️⃣ Franchise Management Platform</li>
+            <li>4️⃣ Student Practice Portal (Serverless Go on AWS)</li>
           </ul>
         </motion.div>
 
@@ -145,10 +148,23 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
             {[
               "Python",
+              "Go",
+              "Dart",
+              "JavaScript",
+              "PHP",
+              "Node.js & Express",
+              "FastAPI",
+              "Laravel",
+              "AWS (Lambda, API Gateway, DynamoDB, SQS, CDK)",
+              "GCP (Compute Engine, Cloud Run)",
               "React",
-              "MySQL",
+              "Flutter",
               "MongoDB",
-              "Git",
+              "MySQL",
+              "Docker",
+              "Git & GitHub Actions",
+              "Cloudflare Tunnels",
+              "Stripe",
               "NLP",
               "Problem Solving",
               "Teamwork",
@@ -248,8 +264,6 @@ proficiency, and time-prioritized execution, with a proven ability to spearhead 
         >
           ⬇️ Download Resume
         </motion.a>
-
-
       </motion.div>
     </section>
   );

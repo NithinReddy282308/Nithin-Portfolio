@@ -9,11 +9,8 @@ import Resume from './pages/Resume'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
-import SkillNetwork from './pages/Skills'  
-import Experience from "./pages/Experience"
-
-
-
+import Skills from './pages/Skills'
+import Experience from './pages/Experience'
 
 export default function App() {
   return (
@@ -23,12 +20,12 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<SkillNetwork />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/about" element={<About />} /> {/* ✅ fixed lowercase */}
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
