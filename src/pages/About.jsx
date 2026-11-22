@@ -82,7 +82,7 @@ const AboutMe = () => {
             marginTop: "1rem",
           }}
         >
-          I’m currently pursuing my{" "}
+          Undergrad,{" "}
           <strong>B.Tech in Artificial Intelligence and Data Science</strong> at
           VVIT, Guntur, while working as a{" "}
           <strong>Senior Consultant</strong> at Srireina
@@ -168,7 +168,7 @@ const AboutMe = () => {
                   - Guntur, Andhra Pradesh
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>
-                  4th Year (Pursuing) 
+                  CGPA - 8.14
                 </p>
                 <p style={{ color: "rgba(255,255,255,0.7)" }}>2022 - 2026</p>
               </div>
