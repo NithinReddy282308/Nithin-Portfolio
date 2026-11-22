@@ -4,6 +4,10 @@ import { send } from "@emailjs/browser";
 
 import "../CSS/Contact.css";
 
+// Shown to visitors when sending fails; technical details go to the console only
+const FALLBACK_MESSAGE =
+  "Sorry, your message couldn't be sent right now. Please email me directly at nithinrvanga@gmail.com.";
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", contact: "", subject: "", message: "" });
   const [status, setStatus] = useState("");
@@ -40,7 +44,7 @@ export default function Contact() {
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       console.error("Missing EmailJS env vars:", { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY });
-      setStatus("❌ Email service not configured. Check .env and restart dev server.");
+      setStatus(FALLBACK_MESSAGE);
       return;
     }
 
@@ -61,9 +65,7 @@ export default function Contact() {
       setForm({ name: "", contact: "", subject: "", message: "" });
     } catch (err) {
       console.error("EmailJS send error:", err);
-      let msg = "❌ Failed to send. Check console and EmailJS logs.";
-      if (err && err.status) msg = `❌ Failed (${err.status}). ${err.text || ""}`;
-      setStatus(msg);
+      setStatus(FALLBACK_MESSAGE);
     } finally {
       setSending(false);
     }
